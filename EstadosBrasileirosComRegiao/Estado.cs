@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace EstadosBrasileirosComRegiao
 {
@@ -163,7 +162,6 @@ namespace EstadosBrasileirosComRegiao
         /// </summary>
         public static readonly Estado TOCANTINS = new Estado("Tocantins", "TO", Regiao.NORTE);
 
-
         public static IEnumerable<Estado> Estados
         {
             get
@@ -198,20 +196,6 @@ namespace EstadosBrasileirosComRegiao
             }
         }
 
-
-        public static IEnumerable<Estado> EstadosPorRegiao(Regiao regiao)
-        {
-            IList<Estado> estadosPorRegiao = new List<Estado>();
-
-            foreach (var estado in Estados)
-            {
-                if (estado.Regiao == regiao)
-                {
-                    estadosPorRegiao.Add(estado);
-                }
-            }
-
-            return estadosPorRegiao;
-        }
+        public static IEnumerable<Estado> EstadosPorRegiao(Regiao regiao) => Estados.Where(w => w.Regiao == regiao);
     }
 }
